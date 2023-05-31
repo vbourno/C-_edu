@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PointMVCMonolithicApp
+﻿namespace PointMVCMonolithicApp
 {
     internal class Point : IComparable<Point>, IEquatable<Point>
     {
@@ -25,7 +19,7 @@ namespace PointMVCMonolithicApp
         /// <returns></returns>
         public bool Equals(Point? other)
         {
-            if (other == null) return false;
+            if (other is null) return false;
             return CompareTo(other) == 0;
         }
 
@@ -125,7 +119,7 @@ namespace PointMVCMonolithicApp
         /// 
         /// </summary>
         /// <returns></returns>
-        public Point? GetPoint()
+        public Point? GetOnePoint()
         {
             return (points.Contains(this)) ? points[GetPointPosition()] : null;
         }
@@ -137,6 +131,43 @@ namespace PointMVCMonolithicApp
         private int GetPointPosition()
         {
             return points.IndexOf(this);
+        }
+
+        // Services Layer
+
+        public void InsertPointService()
+        {
+            this.Insert();
+        }
+
+        public Point? DeletePointService()
+        {
+            return Delete();
+        }
+
+        public void UpdatePointService(int x)
+        {
+            try
+            {
+                if (!Update(x))
+                {
+                    throw new Exception("Update Error");
+                }
+            } catch (Exception e) 
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
+        }
+
+        public Point? GetPointService()
+        {
+            return GetOnePoint();
+        }
+
+        public static List<Point> GetAllPointsService()
+        {
+            return points;
         }
     }
 }
