@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /HStudentSOAApp
+/ReadApp1
+/ReadApp2
+/ReadApp3

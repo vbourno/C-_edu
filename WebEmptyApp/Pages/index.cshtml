@@ -1,0 +1,28 @@
+﻿@page
+@using System.Globalization
+
+@functions {
+    public string? DayName {get; set;}
+
+    public void OnGet()
+    {
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+        ViewData["Title"] = "Coding Factory";
+        Model.DayName = DateTime.Now.ToString("dddd");
+    }
+}
+
+<div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1 class="display-3">Welcome to Coding Factory</h1>
+    <p class="lead">We create professional programmers</p>
+    <hr />
+
+    <p>
+        It's @Model.DayName ! Time to learn more about Coding Factory!
+    </p>
+
+    <p>
+        <a class="btn btn-secondary" href="https://codingfactory.aueb.gr/">Learn more</a>
+    </p>
+</div>
+
