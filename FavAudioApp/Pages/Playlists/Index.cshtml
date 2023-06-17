@@ -1,0 +1,36 @@
+﻿@page
+@model             Playlists.IndexModel
+@{
+}
+
+<h2>Playlists List</h2>
+<a class="btn btn-primary btn-sm" href="/Playlists/Create">New Playlist</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Link</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.playlists.Count != 0)
+        {
+            @foreach (var playlist in Model.playlists)
+            {
+                <tr>
+                    <td>@playlist.Id</td>
+                    <td>@playlist.Name</td>
+                    <td><a class="btn btn-success btn-sm" href="@playlist.Url" target="_blank">Play</a></td>
+                    <td>@playlist.Genre</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="/Playlists/Update?id=@playlist.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/Playlists/Delete?id=@playlist.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

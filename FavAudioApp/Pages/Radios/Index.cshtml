@@ -1,0 +1,38 @@
+﻿@page
+@model             Radios.IndexModel
+@{
+}
+
+<h2>Radios List</h2>
+<a class="btn btn-primary btn-sm" href="/Radios/Create">New Radio</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Link</th>
+            <th>Genre</th>
+            <th>Region</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.radios.Count != 0)
+        {
+            @foreach (var radio in Model.radios)
+            {
+                <tr>
+                    <td>@radio.Id</td>
+                    <td>@radio.Name</td>
+                    <td><a class="btn btn-success btn-sm" href="@radio.Url" target="_blank">Play</a></td>
+                    <td>@radio.Genre</td>
+                    <td>@radio.Region</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="/Radios/Update?id=@radio.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/Radios/Delete?id=@radio.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

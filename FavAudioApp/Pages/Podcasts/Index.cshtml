@@ -1,0 +1,34 @@
+﻿@page
+@model             Podcasts.IndexModel
+@{
+}
+
+<h2>Podcasts List</h2>
+<a class="btn btn-primary btn-sm" href="/Podcasts/Create">New Podcast</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.podcasts.Count != 0)
+        {
+            @foreach (var podcast in Model.podcasts)
+            {
+                <tr>
+                    <td>@podcast.Id</td>
+                    <td>@podcast.Name</td>
+                    <td><a class="btn btn-success btn-sm" href="@podcast.Url" target="_blank">Play</a></td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="/Podcasts/Update?id=@podcast.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/Podcasts/Delete?id=@podcast.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
